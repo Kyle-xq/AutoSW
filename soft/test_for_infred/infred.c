@@ -52,7 +52,7 @@ char infred_send_bit (char n)
 		default: len_high = INFRED_BIT_START; break; 
 	}
 	
-	//发送高脉冲
+	//发送高脉冲;;;'
 	do {
 		
 		while(~CCF0);

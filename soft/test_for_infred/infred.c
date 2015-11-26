@@ -27,7 +27,7 @@ void infred_init (void )
 	CCF0=0;
 	
 	CL = 0;                         //复位PCA寄存器
-    CH = 0;
+    CH = 0;sss
 	CR = 0;                         //PCA定时器停止工作
 	//EA = 1 ;
 }

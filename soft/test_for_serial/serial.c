@@ -15,13 +15,9 @@ void serial_init (){
 //  ACC |= S1_S1;               //(P1.6/RxD_3, P1.7/TxD_3)
 //  P_SW1 = ACC;  
 
-#if (PARITYBIT == NONE_PARITY)
-    SCON = 0x50;                //8位可变波特率
-#elif (PARITYBIT == ODD_PARITY) || (PARITYBIT == EVEN_PARITY) || (PARITYBIT == MARK_PARITY)
-    SCON = 0xda;                //9位可变波特率,校验位初始为1
-#elif (PARITYBIT == SPACE_PARITY)
-    SCON = 0xd2;                //9位可变波特率,校验位初始为0
-#endif
+
+    SCON = 0x50;                //8位可变波特率 
+
 
     AUXR = 0x40;                //定时器1为1T模式
     TMOD = 0x00;                //定时器1为模式0(16位自动重载)
@@ -35,46 +31,32 @@ void serial_init (){
 /*----------------------------
 UART 中断服务程序
 -----------------------------*/
-void Uart() interrupt 4 using 1
-{
-    if (RI)
-    {
-        RI = 0;                 //清除RI位
-        P0 = SBUF;              //P0显示串口数据
-        P22 = RB8;              //P2.2显示校验位
-    }
-    if (TI)
-    {
-        TI = 0;                 //清除TI位
-        busy = 0;               //清忙标志
-    }
-}
+//void Uart() interrupt 4 using 1
+//{
+//    //if (RI)  //------采用查询方式，接收串口数据
+//    //{
+//    //    //RI = 0;                 //清除RI位
+//    //    //P0 = SBUF;              //P0显示串口数据
+//    //    //P22 = RB8;              //P2.2显示校验位
+//    //}
+//	
+//    if (TI)
+//    {
+//        TI = 0;                 //清除TI位
+//        busy = 0;               //清忙标志
+//    }
+//}
+
 
 /*----------------------------
 发送串口数据
 ----------------------------*/
 void serial_SendData(BYTE dat)
 {
-    while (busy);               //等待前面的数据发送完成
     ACC = dat;                  //获取校验位P (PSW.0)
-    if (P)                      //根据P来设置校验位
-    {
-#if (PARITYBIT == ODD_PARITY)
-        TB8 = 0;                //设置校验位为0
-#elif (PARITYBIT == EVEN_PARITY)
-        TB8 = 1;                //设置校验位为1
-#endif
-    }
-    else
-    {
-#if (PARITYBIT == ODD_PARITY)
-        TB8 = 1;                //设置校验位为1
-#elif (PARITYBIT == EVEN_PARITY)
-        TB8 = 0;                //设置校验位为0
-#endif
-    }
-    busy = 1;
     SBUF = ACC;                 //写数据到UART数据寄存器
+	while (~TI);               	//等待数据发送完成
+	TI = 0;                 	//清除TI位
 }
 
 /*----------------------------

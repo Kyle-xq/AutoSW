@@ -1,7 +1,10 @@
+#ifndef FOSC
+  #define FOSC 11059200L          //系统频率
+#endif
 
-
-#define FOSC 11059200L          //系统频率
-#define BAUD 115200             //串口波特率
+#ifndef FOSC
+  #define BAUD 115200             //串口波特率
+#endif
 
 #define NONE_PARITY     0       //无校验
 #define ODD_PARITY      1       //奇校验

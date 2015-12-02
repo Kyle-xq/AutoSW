@@ -14,14 +14,24 @@
 //本示例在Keil开发环境下请选择Intel的8058芯片型号进行编译
 //若无特别说明,工作频率一般为11.0592MHz
 
-
+#include "main.h"
 #include "stc.h"
 #include "intrins.h"
+#include "serial.h"
 
-#define FOSC    11059200L
+
 
 void main()
 {
+	serial_init();
+	while (1) {
+		while(~RI);
+		ACC = SBUF;
+		RI=0;
+		serial_SendData(ACC);
+		serial_SendString("\n\rok\n\r");
+	}
+	
 	
 }
 

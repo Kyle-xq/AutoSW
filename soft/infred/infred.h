@@ -1,8 +1,8 @@
 #define INFRED_PIN P00
 #define INFRED_BIT_LEN 239
-#define INFRED_BIT_START 400
-#define INFRED_BIT_1 200
-#define INFRED_BIT_0 100
+#define INFRED_BIT_START 200
+#define INFRED_BIT_1 100
+#define INFRED_BIT_0 40
 
 #define FOSC    20000000L
 #define T38KHz (FOSC / 2 / 38000)

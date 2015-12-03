@@ -1,4 +1,0 @@
-".\infred.obj",
-".\main.obj" 
-TO "test" 
-RAMSIZE(256) 

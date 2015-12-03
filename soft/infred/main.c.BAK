@@ -19,6 +19,12 @@ void main()
 		delay=0 ;
 		do{
 			delay++;
+			delay--;
+			delay++;
+			delay--;
+			delay++;
+			delay--;
+			delay++;
 		}while(delay<30000);
 		
 		// infred_send_bit(0x01);

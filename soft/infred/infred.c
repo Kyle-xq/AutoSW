@@ -27,7 +27,7 @@ void infred_init (void )
 	CCF0=0;
 	
 	CL = 0;                         //¸´Î»PCA¼Ä´æÆ÷
-    CH = 0;sss
+    CH = 0;
 	CR = 0;                         //PCA¶¨Ê±Æ÷Í£Ö¹¹¤×÷
 	//EA = 1 ;
 }
@@ -64,7 +64,7 @@ char infred_send_bit (char n)
 	}while(cnt < len_high);
 	CR = 0;  
 	//·¢ËÍµÍÂö³å
-	for(cnt=0;cnt<2000;cnt++);
+	for(cnt=0;cnt<200;cnt++);
 	
 	return 1 ;
 }

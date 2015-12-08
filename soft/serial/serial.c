@@ -1,3 +1,5 @@
+
+#include "STC15.H"
 #include "serial.h"
 
 void serial_init (){
@@ -15,57 +17,68 @@ void serial_init (){
 //  ACC |= S1_S1;               //(P1.6/RxD_3, P1.7/TxD_3)
 //  P_SW1 = ACC;  
 
+#if (PARITYBIT == NONE_PARITY)
+    SCON = 0x50;                //8λ�ɱ䲨����
+#elif (PARITYBIT == ODD_PARITY) || (PARITYBIT == EVEN_PARITY) || (PARITYBIT == MARK_PARITY)
+    SCON = 0xda;                //9λ�ɱ䲨����,У��λ��ʼΪ1
+#elif (PARITYBIT == SPACE_PARITY)
+    SCON = 0xd2;                //9λ�ɱ䲨����,У��λ��ʼΪ0
+#endif
 
-    SCON = 0x50;                //8位可变波特率 
+    T2L = (65536 - (FOSC/4/BAUD));   //���ò�������װֵ
+    T2H = (65536 - (FOSC/4/BAUD))>>8;
+    AUXR = 0x14;                //T2Ϊ1Tģʽ, ��������ʱ��2
+    AUXR |= 0x01;               //ѡ��ʱ��2Ϊ����1�Ĳ����ʷ�����
 
-
-    AUXR = 0x40;                //定时器1为1T模式
-    TMOD = 0x00;                //定时器1为模式0(16位自动重载)
-    TL1 = (65536 - (FOSC/4/BAUD));   //设置波特率重装值
-    TH1 = (65536 - (FOSC/4/BAUD))>>8;
-    TR1 = 1;                    //定时器1开始启动
-    ES = 1;                     //使能串口中断
+    ES = 1;                     //ʹ�ܴ���1�ж�
     EA = 1;
 }
 
 /*----------------------------
-UART 中断服务程序
+UART �жϷ������
 -----------------------------*/
 //void Uart() interrupt 4 using 1
 //{
-//    //if (RI)  //------采用查询方式，接收串口数据
+//    //if (RI)  //------���ò�ѯ��ʽ�����մ�������
 //    //{
-//    //    //RI = 0;                 //清除RI位
-//    //    //P0 = SBUF;              //P0显示串口数据
-//    //    //P22 = RB8;              //P2.2显示校验位
+//    //    //RI = 0;                 //���RIλ
+//    //    //P0 = SBUF;              //P0��ʾ��������
+//    //    //P22 = RB8;              //P2.2��ʾУ��λ
 //    //}
 //	
 //    if (TI)
 //    {
-//        TI = 0;                 //清除TI位
-//        busy = 0;               //清忙标志
+//        TI = 0;                 //���TIλ
+//        busy = 0;               //��æ��־
 //    }
 //}
 
+char serial_ReciveData()
+{
+	while ( ~RI );
+	RI=0;
+	return SBUF;
+}
+
 
 /*----------------------------
-发送串口数据
+���ʹ�������
 ----------------------------*/
-void serial_SendData(BYTE dat)
+void serial_SendData(char dat)
 {
-    ACC = dat;                  //获取校验位P (PSW.0)
-    SBUF = ACC;                 //写数据到UART数据寄存器
-	while (~TI);               	//等待数据发送完成
-	TI = 0;                 	//清除TI位
+    ACC = dat;                  //��ȡУ��λP (PSW.0)
+    SBUF = ACC;                 //д���ݵ�UART���ݼĴ���
+	while (~TI);               	//�ȴ����ݷ������
+	TI = 0;                 	//���TIλ
 }
 
 /*----------------------------
-发送字符串
+�����ַ���
 ----------------------------*/
 void serial_SendString(char *s)
 {
-    while (*s)                  //检测字符串结束标志
+    while (*s)                  //����ַ���������־
     {
-        SendData(*s++);         //发送当前字符
+        serial_SendData(*s++);         //���͵�ǰ�ַ�
     }
 }

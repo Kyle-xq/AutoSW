@@ -1,0 +1,4 @@
+".\main.obj",
+".\serial.obj" 
+TO "autosw" 
+RAMSIZE(256) 

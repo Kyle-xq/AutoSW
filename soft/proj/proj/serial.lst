@@ -1,0 +1,110 @@
+C51 COMPILER V8.02   SERIAL                                                                12/09/2015 06:46:47 PAGE 1   
+
+
+C51 COMPILER V8.02, COMPILATION OF MODULE SERIAL
+OBJECT MODULE PLACED IN .\serial.obj
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE ..\..\serial\serial.c BROWSE DEBUG OBJECTEXTEND PRINT(.\serial.lst) OBJECT(
+                    -.\serial.obj)
+
+line level    source
+
+   1          
+   2          #include "STC15.H"
+   3          #include "serial.h"
+   4          
+   5          void serial_init (){
+   6   1              ACC = P_SW1;
+   7   1          ACC &= ~(S1_S0 | S1_S1);    //S1_S0=0 S1_S1=0
+   8   1          P_SW1 = ACC;                //(P3.0/RxD, P3.1/TxD)
+   9   1          
+  10   1      //  ACC = P_SW1;
+  11   1      //  ACC &= ~(S1_S0 | S1_S1);    //S1_S0=1 S1_S1=0
+  12   1      //  ACC |= S1_S0;               //(P3.6/RxD_2, P3.7/TxD_2)
+  13   1      //  P_SW1 = ACC;  
+  14   1      //  
+  15   1      //  ACC = P_SW1;
+  16   1      //  ACC &= ~(S1_S0 | S1_S1);    //S1_S0=0 S1_S1=1
+  17   1      //  ACC |= S1_S1;               //(P1.6/RxD_3, P1.7/TxD_3)
+  18   1      //  P_SW1 = ACC;  
+  19   1      
+  20   1      #if (PARITYBIT == NONE_PARITY)
+                  SCON = 0x50;                //8位可变波特率
+              #elif (PARITYBIT == ODD_PARITY) || (PARITYBIT == EVEN_PARITY) || (PARITYBIT == MARK_PARITY)
+  23   1          SCON = 0xda;                //9位可变波特率,校验位初始为1
+  24   1      #elif (PARITYBIT == SPACE_PARITY)
+                  SCON = 0xd2;                //9位可变波特率,校验位初始为0
+              #endif
+  27   1      
+  28   1          T2L = (65536 - (FOSC/4/BAUD));   //设置波特率重装值
+  29   1          T2H = (65536 - (FOSC/4/BAUD))>>8;
+  30   1          AUXR = 0x14;                //T2为1T模式, 并启动定时器2
+  31   1          AUXR |= 0x01;               //选择定时器2为串口1的波特率发生器
+  32   1      
+  33   1          ES = 1;                     //使能串口1中断
+  34   1          EA = 1;
+  35   1      }
+  36          
+  37          /*----------------------------
+  38          UART 中断服务程序
+  39          -----------------------------*/
+  40          //void Uart() interrupt 4 using 1
+  41          //{
+  42          //    //if (RI)  //------采用查询方式，接收串口数据
+  43          //    //{
+  44          //    //    //RI = 0;                 //清除RI位
+  45          //    //    //P0 = SBUF;              //P0显示串口数据
+  46          //    //    //P22 = RB8;              //P2.2显示校验位
+  47          //    //}
+  48          //      
+  49          //    if (TI)
+  50          //    {
+  51          //        TI = 0;                 //清除TI位
+  52          //        busy = 0;               //清忙标志
+  53          //    }
+  54          //}
+C51 COMPILER V8.02   SERIAL                                                                12/09/2015 06:46:47 PAGE 2   
+
+  55          
+  56          char serial_ReciveData()
+  57          {
+  58   1              while ( ~RI );
+  59   1              RI=0;
+  60   1              return SBUF;
+  61   1      }
+  62          
+  63          
+  64          /*----------------------------
+  65          发送串口数据
+  66          ----------------------------*/
+  67          void serial_SendData(char dat)
+  68          {
+  69   1          ACC = dat;                  //获取校验位P (PSW.0)
+  70   1          SBUF = ACC;                 //写数据到UART数据寄存器
+  71   1              while (~TI);                    //等待数据发送完成
+  72   1              TI = 0;                         //清除TI位
+  73   1      }
+  74          
+  75          /*----------------------------
+  76          发送字符串
+  77          ----------------------------*/
+  78          void serial_SendString(char *s)
+  79          {
+  80   1          while (*s)                  //检测字符串结束标志
+  81   1          {
+  82   2              serial_SendData(*s++);         //发送当前字符
+  83   2          }
+  84   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     84    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----       3
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

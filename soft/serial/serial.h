@@ -1,17 +1,23 @@
 #ifndef FOSC
-  #define FOSC 11059200L          //ç³»ç»Ÿé¢‘ç‡
+  #define FOSC 11059200L          //ÏµÍ³ÆµÂÊ
 #endif
 
-#ifndef FOSC
-  #define BAUD 115200             //ä¸²å£æ³¢ç‰¹ç‡
+#ifndef BAUD
+  #define BAUD 115200             //´®¿Ú²¨ÌØÂÊ
 #endif
 
-#define NONE_PARITY     0       //æ— æ ¡éªŒ
-#define ODD_PARITY      1       //å¥‡æ ¡éªŒ
-#define EVEN_PARITY     2       //å¶æ ¡éªŒ
-#define MARK_PARITY     3       //æ ‡è®°æ ¡éªŒ
-#define SPACE_PARITY    4       //ç©ºç™½æ ¡éªŒ
+#define NONE_PARITY     0       //ÎŞĞ£Ñé
+#define ODD_PARITY      1       //ÆæĞ£Ñé
+#define EVEN_PARITY     2       //Å¼Ğ£Ñé
+#define MARK_PARITY     3       //±ê¼ÇĞ£Ñé
+#define SPACE_PARITY    4       //¿Õ°×Ğ£Ñé
+
+#define PARITYBIT EVEN_PARITY   //¶¨ÒåĞ£ÑéÎ»
+
+#define S1_S0 0x40              //P_SW1.6
+#define S1_S1 0x80              //P_SW1.7
 
 void serial_init ();
-void serial_SendData(BYTE dat);
+char serial_ReciveData();
+void serial_SendData(char dat);
 void serial_SendString(char *s);

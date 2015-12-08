@@ -1,0 +1,207 @@
+BL51 BANKED LINKER/LOCATER V6.00                                                        12/09/2015  06:39:27  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.00, INVOKED BY:
+C:\KEIL\C51\BIN\BL51.EXE .\main.obj, .\serial.obj TO autosw RAMSIZE (256)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  .\main.obj (MAIN)
+  .\serial.obj (SERIAL)
+  C:\KEIL\C51\LIB\C51S.LIB (?C_STARTUP)
+  C:\KEIL\C51\LIB\C51S.LIB (?C?CLDPTR)
+
+
+LINK MAP OF MODULE:  autosw (MAIN)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0003H     UNIT         ?DT?_SERIAL_SENDSTRING?SERIAL
+            IDATA   000BH     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     0025H     UNIT         ?PR?_SERIAL_SENDSTRING?SERIAL
+            CODE    0028H     001AH     UNIT         ?PR?SERIAL_INIT?SERIAL
+            CODE    0042H     0019H     UNIT         ?C?LIB_CODE
+            CODE    005BH     0010H     UNIT         ?PR?MAIN?MAIN
+            CODE    006BH     000CH     UNIT         ?C_C51STARTUP
+            CODE    0077H     000BH     UNIT         ?PR?_SERIAL_SENDDATA?SERIAL
+            CODE    0082H     000AH     UNIT         ?PR?SERIAL_RECIVEDATA?SERIAL
+
+
+
+OVERLAY MAP OF MODULE:   autosw (MAIN)
+
+
+SEGMENT
+  +--> CALLED SEGMENT
+---------------------
+?C_C51STARTUP
+  +--> ?PR?MAIN?MAIN
+
+?PR?MAIN?MAIN
+  +--> ?PR?SERIAL_INIT?SERIAL
+  +--> ?PR?_SERIAL_SENDDATA?SERIAL
+
+
+
+UNRESOLVED EXTERNAL SYMBOLS:
+   INITADC
+   _GETADCRESULT
+
+
+
+BL51 BANKED LINKER/LOCATER V6.00                                                      12/09/2015  06:39:27  PAGE 2
+
+
+SYMBOL TABLE OF MODULE:  autosw (MAIN)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        MAIN
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0080H         PUBLIC        P0
+  D:0090H         PUBLIC        P1
+  D:00A0H         PUBLIC        P2
+  D:00B0H         PUBLIC        P3
+  D:00C0H         PUBLIC        P4
+  D:00C8H         PUBLIC        P5
+  D:00E8H         PUBLIC        P6
+  D:00F8H         PUBLIC        P7
+  D:00A8H         PUBLIC        IE
+  D:00B8H         PUBLIC        IP
+  D:00D8H         PUBLIC        CCON
+  C:005BH         PUBLIC        main
+  D:0098H         PUBLIC        SCON
+  D:0088H         PUBLIC        TCON
+  D:00D0H         PUBLIC        PSW
+  -------         PROC          MAIN
+  C:005BH         LINE#         26
+  C:005BH         LINE#         27
+  C:005BH         LINE#         28
+  C:005EH         LINE#         29
+  C:0061H         LINE#         31
+  C:0061H         LINE#         37
+  C:0069H         LINE#         39
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        MAIN
+
+  -------         MODULE        SERIAL
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0080H         PUBLIC        P0
+  D:0090H         PUBLIC        P1
+  D:00A0H         PUBLIC        P2
+  D:00B0H         PUBLIC        P3
+  D:00C0H         PUBLIC        P4
+  D:00C8H         PUBLIC        P5
+  B:00A8H.7       PUBLIC        EA
+  D:00E8H         PUBLIC        P6
+  D:00F8H         PUBLIC        P7
+  D:00A2H         PUBLIC        P_SW1
+  D:00A8H         PUBLIC        IE
+  B:00A8H.4       PUBLIC        ES
+  D:00B8H         PUBLIC        IP
+  C:0028H         PUBLIC        serial_init
+  B:0098H.0       PUBLIC        RI
+  B:0098H.1       PUBLIC        TI
+  D:00D8H         PUBLIC        CCON
+  D:0099H         PUBLIC        SBUF
+  D:0098H         PUBLIC        SCON
+  D:0088H         PUBLIC        TCON
+  D:008EH         PUBLIC        AUXR
+  C:0082H         PUBLIC        serial_ReciveData
+BL51 BANKED LINKER/LOCATER V6.00                                                      12/09/2015  06:39:27  PAGE 3
+
+
+  D:00E0H         PUBLIC        ACC
+  C:0003H         PUBLIC        _serial_SendString
+  C:0077H         PUBLIC        _serial_SendData
+  D:00D6H         PUBLIC        T2H
+  D:00D7H         PUBLIC        T2L
+  D:00D0H         PUBLIC        PSW
+  -------         PROC          SERIAL_INIT
+  C:0028H         LINE#         5
+  C:0028H         LINE#         6
+  C:002AH         LINE#         7
+  C:002CH         LINE#         8
+  C:002EH         LINE#         23
+  C:0031H         LINE#         28
+  C:0034H         LINE#         29
+  C:0037H         LINE#         30
+  C:003AH         LINE#         31
+  C:003DH         LINE#         33
+  C:003FH         LINE#         34
+  C:0041H         LINE#         35
+  -------         ENDPROC       SERIAL_INIT
+  -------         PROC          SERIAL_RECIVEDATA
+  C:0082H         LINE#         56
+  C:0082H         LINE#         57
+  C:0082H         LINE#         58
+  C:0087H         LINE#         59
+  C:0089H         LINE#         60
+  C:008BH         LINE#         61
+  -------         ENDPROC       SERIAL_RECIVEDATA
+  -------         PROC          _SERIAL_SENDDATA
+  D:0007H         SYMBOL        dat
+  C:0077H         LINE#         67
+  C:0077H         LINE#         68
+  C:0077H         LINE#         69
+  C:0078H         LINE#         70
+  C:007AH         LINE#         71
+  C:007FH         LINE#         72
+  C:0081H         LINE#         73
+  -------         ENDPROC       _SERIAL_SENDDATA
+  -------         PROC          _SERIAL_SENDSTRING
+  D:0008H         SYMBOL        s
+  C:0003H         LINE#         78
+  C:0009H         LINE#         79
+  C:0009H         LINE#         80
+  C:0014H         LINE#         81
+  C:0014H         LINE#         82
+  C:0025H         LINE#         83
+  C:0027H         LINE#         84
+  -------         ENDPROC       _SERIAL_SENDSTRING
+  -------         ENDMOD        SERIAL
+
+  -------         MODULE        ?C?CLDPTR
+  C:0042H         PUBLIC        ?C?CLDPTR
+  -------         ENDMOD        ?C?CLDPTR
+
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?SERIAL_RECIVEDATA?SERIAL
+
+BL51 BANKED LINKER/LOCATER V6.00                                                      12/09/2015  06:39:27  PAGE 4
+
+
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_SERIAL_SENDSTRING?SERIAL
+
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  _GETADCRESULT
+    MODULE:  .\main.obj (MAIN)
+
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  INITADC
+    MODULE:  .\main.obj (MAIN)
+
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  INITADC
+    MODULE:  .\main.obj (MAIN)
+    ADDRESS: 005FH
+
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  _GETADCRESULT
+    MODULE:  .\main.obj (MAIN)
+    ADDRESS: 0064H
+
+Program Size: data=12.0 xdata=0 code=140
+LINK/LOCATE RUN COMPLETE.  6 WARNING(S),  0 ERROR(S)

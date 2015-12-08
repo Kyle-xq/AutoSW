@@ -1,7 +1,6 @@
-
 /*---------------------------------------------------------------------*/
 /* --- STC MCU Limited ------------------------------------------------*/
-/* --- STC15F4K60S4 系列 PCA输出6/7/8位PWM举例-------------------------*/
+/* --- STC15F4K60S4 系列 定时器2用作串口1的波特率发生器举例------------*/
 /* --- Mobile: (86)13922805190 ----------------------------------------*/
 /* --- Fax: 86-0513-55012956,55012947,55012969 ------------------------*/
 /* --- Tel: 86-0513-55012928,55012929,55012966-------------------------*/
@@ -14,24 +13,31 @@
 //本示例在Keil开发环境下请选择Intel的8058芯片型号进行编译
 //若无特别说明,工作频率一般为11.0592MHz
 
-#include "main.h"
-#include "stc.h"
-#include "intrins.h"
-#include "serial.h"
 
+#include "main.h"
+
+#include <stc15.h>
+#include <intrins.h>
+
+#include "../../serial/serial.h"
+#include "../../adc/adc.h"
 
 
 void main()
 {
-	serial_init();
-	while (1) {
-		while(~RI);
-		ACC = SBUF;
-		RI=0;
-		serial_SendData(ACC);
-		serial_SendString("\n\rok\n\r");
+	serial_init ();
+	InitADC();
+    
+    while(1) {
+		//if(RI) {
+		//	ACC = SBUF ;
+		//	RI = 0 ;
+		//}
+		
+		//serial_SendData( GetADCResult(0x04));
+		
 	}
-	
-	
 }
+
+
 

@@ -1,4 +1,4 @@
-#include "reg51.h"
+#include "STC15.H"
 #include "infred.h"
 
 void infred_init (void )

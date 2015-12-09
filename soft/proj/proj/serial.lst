@@ -1,4 +1,4 @@
-C51 COMPILER V8.02   SERIAL                                                                12/09/2015 06:46:47 PAGE 1   
+C51 COMPILER V8.02   SERIAL                                                                12/09/2015 14:04:59 PAGE 1   
 
 
 C51 COMPILER V8.02, COMPILATION OF MODULE SERIAL
@@ -8,7 +8,7 @@ COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE ..\..\serial\serial.c BROWSE DEBUG 
 
 line level    source
 
-   1          
+   1          #include "../proj/src/sys.h"
    2          #include "STC15.H"
    3          #include "serial.h"
    4          
@@ -62,7 +62,7 @@ line level    source
   52          //        busy = 0;               //«Â√¶±Í÷æ
   53          //    }
   54          //}
-C51 COMPILER V8.02   SERIAL                                                                12/09/2015 06:46:47 PAGE 2   
+C51 COMPILER V8.02   SERIAL                                                                12/09/2015 14:04:59 PAGE 2   
 
   55          
   56          char serial_ReciveData()

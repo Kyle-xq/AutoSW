@@ -1,4 +1,4 @@
-
+#include "../proj/src/sys.h"
 #include "STC15.H"
 #include "serial.h"
 

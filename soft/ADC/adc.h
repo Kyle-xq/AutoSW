@@ -6,6 +6,7 @@
 #define ADC_SPEEDH  0x40            //180个时钟
 #define ADC_SPEEDHH 0x60            //90个时钟
 
+
+void Delay (u16 n);	
 void InitADC();
 //BYTE GetADCResult(BYTE ch);
-void Delay(WORD n);

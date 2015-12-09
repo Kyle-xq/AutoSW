@@ -14,6 +14,7 @@
 //若无特别说明,工作频率一般为11.0592MHz
 
 
+#include "sys.h"
 #include "main.h"
 
 #include <stc15.h>

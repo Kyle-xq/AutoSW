@@ -13,7 +13,7 @@
 //本示例在Keil开发环境下请选择Intel的8058芯片型号进行编译
 //若无特别说明,工作频率一般为11.0592MHz
 
-
+#include "../proj/src/sys.h"
 #include "STC15.H"
 #include "intrins.h"
 #include "adc.h"
@@ -45,9 +45,9 @@ void InitADC()
     Delay(2);                       //ADC上电并延时
 }
 
-void Delay(WORD n)
+void Delay(u16 n)
 {
-    WORD x;
+    u16 x;
 
     while (n--)
     {

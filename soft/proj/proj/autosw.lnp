@@ -1,4 +1,5 @@
 ".\main.obj",
+".\adc.obj",
 ".\serial.obj" 
 TO "autosw" 
 RAMSIZE(256) 

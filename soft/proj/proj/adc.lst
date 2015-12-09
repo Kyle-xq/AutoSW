@@ -1,4 +1,4 @@
-C51 COMPILER V8.02   ADC                                                                   12/09/2015 06:46:47 PAGE 1   
+C51 COMPILER V8.02   ADC                                                                   12/09/2015 14:04:59 PAGE 1   
 
 
 C51 COMPILER V8.02, COMPILATION OF MODULE ADC
@@ -23,11 +23,10 @@ line level    source
   13          //本示例在Keil开发环境下请选择Intel的8058芯片型号进行编译
   14          //若无特别说明,工作频率一般为11.0592MHz
   15          
-  16          
+  16          #include "../proj/src/sys.h"
   17          #include "STC15.H"
   18          #include "intrins.h"
   19          #include "adc.h"
-*** ERROR C141 IN LINE 11 OF ..\..\ADC\ADC.H: syntax error near 'n', expected ')'
   20          
   21          /*----------------------------
   22          读取ADC结果
@@ -56,23 +55,29 @@ line level    source
   45   1          Delay(2);                       //ADC上电并延时
   46   1      }
   47          
-  48          void Delay(WORD n)
-*** ERROR C141 IN LINE 48 OF ..\..\ADC\ADC.C: syntax error near 'n', expected ')'
+  48          void Delay(u16 n)
   49          {
-  50   1          WORD x;
-*** ERROR C141 IN LINE 50 OF ..\..\ADC\ADC.C: syntax error near 'x'
-*** ERROR C202 IN LINE 50 OF ..\..\ADC\ADC.C: 'x': undefined identifier
-C51 COMPILER V8.02   ADC                                                                   12/09/2015 06:46:47 PAGE 2   
-
+  50   1          u16 x;
   51   1      
   52   1          while (n--)
-*** ERROR C202 IN LINE 52 OF ..\..\ADC\ADC.C: 'n': undefined identifier
   53   1          {
   54   2              x = 5000;
-*** ERROR C202 IN LINE 54 OF ..\..\ADC\ADC.C: 'x': undefined identifier
+C51 COMPILER V8.02   ADC                                                                   12/09/2015 14:04:59 PAGE 2   
+
   55   2              while (x--);
-*** ERROR C202 IN LINE 55 OF ..\..\ADC\ADC.C: 'x': undefined identifier
   56   2          }
   57   1      }
 
-C51 COMPILATION COMPLETE.  0 WARNING(S),  7 ERROR(S)
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     42    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

@@ -1,4 +1,4 @@
-C51 COMPILER V8.02   MAIN                                                                  12/09/2015 14:04:59 PAGE 1   
+C51 COMPILER V8.02   MAIN                                                                  12/11/2015 23:25:20 PAGE 1   
 
 
 C51 COMPILER V8.02, COMPILATION OF MODULE MAIN
@@ -36,34 +36,37 @@ line level    source
   26          
   27          void main()
   28          {
-  29   1              serial_init ();
-  30   1              InitADC();
-  31   1          
-  32   1          while(1) {
-  33   2                      //if(RI) {
-  34   2                      //      ACC = SBUF ;
-  35   2                      //      RI = 0 ;
-  36   2                      //}
-  37   2                      
-  38   2                      //serial_SendData( GetADCResult(0x04));
-  39   2                      
-  40   2              }
-  41   1      }
-  42          
-  43          
-  44          
+  29   1              u16 tmp ;
+  30   1              serial_init ();
+  31   1              InitADC();
+  32   1          
+  33   1          while(1) {
+  34   2                      if(RI) {
+  35   3                              ACC = SBUF ;
+  36   3                              RI = 0 ;
+  37   3                      }
+  38   2                      tmp = GetADCResult(0x01) ;
+  39   2                      serial_SendData( 0XFF );
+  40   2                      serial_SendData( tmp );
+  41   2                      serial_SendData( tmp>>8 );
+  42   2                      
+  43   2              }
+  44   1      }
+  45          
+  46          
+  47          
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =      8    ----
+   CODE SIZE        =     40    ----
    CONSTANT SIZE    =   ----    ----
    XDATA SIZE       =   ----    ----
    PDATA SIZE       =   ----    ----
-   DATA SIZE        =   ----    ----
+C51 COMPILER V8.02   MAIN                                                                  12/11/2015 23:25:20 PAGE 2   
+
+   DATA SIZE        =   ----       2
    IDATA SIZE       =   ----    ----
    BIT SIZE         =   ----    ----
-C51 COMPILER V8.02   MAIN                                                                  12/09/2015 14:04:59 PAGE 2   
-
 END OF MODULE INFORMATION.
 
 

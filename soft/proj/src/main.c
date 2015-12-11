@@ -26,16 +26,19 @@
 
 void main()
 {
+	u16 tmp ;
 	serial_init ();
 	InitADC();
     
     while(1) {
-		//if(RI) {
-		//	ACC = SBUF ;
-		//	RI = 0 ;
-		//}
-		
-		//serial_SendData( GetADCResult(0x04));
+		if(RI) {
+			ACC = SBUF ;
+			RI = 0 ;
+		}
+		tmp = GetADCResult(0x01) ;
+		serial_SendData( 0XFF );
+		serial_SendData( tmp );
+		serial_SendData( tmp>>8 );
 		
 	}
 }

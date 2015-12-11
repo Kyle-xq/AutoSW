@@ -34,7 +34,7 @@ Options 1,0,0  // Target 'Target 1'
  EnvLib ()
  EnvReg (ÿSTC\)
  OrgReg (ÿSTC\)
- TgStat=16
+ TgStat=25
  OutDir (.\)
  OutName (autosw)
  GenApp=1

@@ -3,159 +3,31 @@
 <pre>
 <h1>µVision3 Build Log</h1>
 <h2>Project:</h2>
-E:\mjob\git\AutoSW\soft\proj\proj\autosw.uv2
-Project File Date:  12/09/2015
+F:\dxq\proj\AutoSW\AutoSW\soft\proj\proj\autosw.uv2
+Project File Date:  12/11/2015
 
 <h2>Output:</h2>
 Build target 'Target 1'
 compiling main.c...
-compiling adc.c...
-..\..\ADC\ADC.H(11): error C141: syntax error near 'n', expected ')'
-..\..\ADC\ADC.C(48): error C141: syntax error near 'n', expected ')'
-..\..\ADC\ADC.C(50): error C141: syntax error near 'x'
-..\..\ADC\ADC.C(50): error C202: 'x': undefined identifier
-..\..\ADC\ADC.C(52): error C202: 'n': undefined identifier
-..\..\ADC\ADC.C(54): error C202: 'x': undefined identifier
-..\..\ADC\ADC.C(55): error C202: 'x': undefined identifier
 compiling serial.c...
-Target not created
-Build target 'Target 1'
-compiling main.c...
 compiling adc.c...
-..\..\ADC\ADC.H(11): error C141: syntax error near 'n', expected ')'
-..\..\ADC\ADC.C(48): error C141: syntax error near 'n', expected ')'
-..\..\ADC\ADC.C(50): error C141: syntax error near 'x'
-..\..\ADC\ADC.C(50): error C202: 'x': undefined identifier
-..\..\ADC\ADC.C(52): error C202: 'n': undefined identifier
-..\..\ADC\ADC.C(54): error C202: 'x': undefined identifier
-..\..\ADC\ADC.C(55): error C202: 'x': undefined identifier
-compiling serial.c...
-Target not created
-Build target 'Target 1'
-compiling main.c...
-compiling adc.c...
-..\..\ADC\ADC.H(10): error C141: syntax error near 'n', expected ')'
-..\..\ADC\ADC.C(48): error C141: syntax error near 'n', expected ')'
-..\..\ADC\ADC.C(50): error C141: syntax error near 'x'
-..\..\ADC\ADC.C(50): error C202: 'x': undefined identifier
-..\..\ADC\ADC.C(52): error C202: 'n': undefined identifier
-..\..\ADC\ADC.C(54): error C202: 'x': undefined identifier
-..\..\ADC\ADC.C(55): error C202: 'x': undefined identifier
-compiling serial.c...
-Target not created
-Build target 'Target 1'
-compiling main.c...
-compiling adc.c...
-..\..\ADC\ADC.H(10): error C141: syntax error near 'n', expected ')'
-..\..\ADC\ADC.C(48): error C141: syntax error near 'n', expected ')'
-..\..\ADC\ADC.C(50): error C141: syntax error near 'x'
-..\..\ADC\ADC.C(50): error C202: 'x': undefined identifier
-..\..\ADC\ADC.C(52): error C202: 'n': undefined identifier
-..\..\ADC\ADC.C(54): error C202: 'x': undefined identifier
-..\..\ADC\ADC.C(55): error C202: 'x': undefined identifier
-compiling serial.c...
-Target not created
-Build target 'Target 1'
-compiling main.c...
-compiling adc.c...
-..\..\ADC\ADC.H(10): error C141: syntax error near 'n', expected ')'
-..\..\ADC\ADC.C(48): error C141: syntax error near 'n', expected ')'
-..\..\ADC\ADC.C(50): error C141: syntax error near 'x'
-..\..\ADC\ADC.C(50): error C202: 'x': undefined identifier
-..\..\ADC\ADC.C(52): error C202: 'n': undefined identifier
-..\..\ADC\ADC.C(54): error C202: 'x': undefined identifier
-..\..\ADC\ADC.C(55): error C202: 'x': undefined identifier
-compiling serial.c...
-Target not created
-Build target 'Target 1'
-compiling main.c...
-compiling adc.c...
-..\..\ADC\ADC.C(48): error C141: syntax error near 'n', expected ')'
-..\..\ADC\ADC.C(50): error C141: syntax error near 'x'
-..\..\ADC\ADC.C(50): error C202: 'x': undefined identifier
-..\..\ADC\ADC.C(52): error C202: 'n': undefined identifier
-..\..\ADC\ADC.C(54): error C202: 'x': undefined identifier
-..\..\ADC\ADC.C(55): error C202: 'x': undefined identifier
-compiling serial.c...
-Target not created
-Build target 'Target 1'
-compiling main.c...
-compiling adc.c...
-..\..\ADC\ADC.C(48): error C141: syntax error near 'n', expected ')'
-..\..\ADC\ADC.C(50): error C141: syntax error near 'x'
-..\..\ADC\ADC.C(50): error C202: 'x': undefined identifier
-..\..\ADC\ADC.C(52): error C202: 'n': undefined identifier
-..\..\ADC\ADC.C(54): error C202: 'x': undefined identifier
-..\..\ADC\ADC.C(55): error C202: 'x': undefined identifier
-compiling serial.c...
-Target not created
-Build target 'Target 1'
-compiling main.c...
-compiling adc.c...
-compiling serial.c...
 linking...
 *** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
     SEGMENT: ?PR?SERIAL_RECIVEDATA?SERIAL
 *** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
     SEGMENT: ?PR?_SERIAL_SENDSTRING?SERIAL
-Program Size: data=12.0 xdata=0 code=174
+Program Size: data=16.0 xdata=0 code=263
+creating hex file from "autosw"...
 "autosw" - 0 Error(s), 2 Warning(s).
 Build target 'Target 1'
 compiling main.c...
-compiling adc.c...
 compiling serial.c...
+compiling adc.c...
 linking...
 *** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
     SEGMENT: ?PR?SERIAL_RECIVEDATA?SERIAL
 *** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
     SEGMENT: ?PR?_SERIAL_SENDSTRING?SERIAL
-Program Size: data=12.0 xdata=0 code=174
-"autosw" - 0 Error(s), 2 Warning(s).
-Build target 'Target 1'
-compiling main.c...
-compiling adc.c...
-..\..\ADC\adc.c(16): warning C318: can't open file 'sys.h'
-..\..\ADC\ADC.H(10): error C141: syntax error near 'n', expected ')'
-..\..\ADC\ADC.C(48): error C141: syntax error near 'n', expected ')'
-..\..\ADC\ADC.C(50): error C141: syntax error near 'x'
-..\..\ADC\ADC.C(50): error C202: 'x': undefined identifier
-..\..\ADC\ADC.C(52): error C202: 'n': undefined identifier
-..\..\ADC\ADC.C(54): error C202: 'x': undefined identifier
-..\..\ADC\ADC.C(55): error C202: 'x': undefined identifier
-compiling serial.c...
-..\..\serial\serial.c(1): warning C318: can't open file 'sys.h'
-Target not created
-Build target 'Target 1'
-compiling main.c...
-compiling adc.c...
-compiling serial.c...
-..\..\serial\serial.c(1): warning C318: can't open file 'sys.h'
-linking...
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?SERIAL_RECIVEDATA?SERIAL
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?_SERIAL_SENDSTRING?SERIAL
-Program Size: data=12.0 xdata=0 code=174
-"autosw" - 0 Error(s), 3 Warning(s).
-Build target 'Target 1'
-compiling main.c...
-compiling adc.c...
-compiling serial.c...
-linking...
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?SERIAL_RECIVEDATA?SERIAL
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?_SERIAL_SENDSTRING?SERIAL
-Program Size: data=12.0 xdata=0 code=174
-"autosw" - 0 Error(s), 2 Warning(s).
-Build target 'Target 1'
-compiling main.c...
-compiling adc.c...
-compiling serial.c...
-linking...
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?SERIAL_RECIVEDATA?SERIAL
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?_SERIAL_SENDSTRING?SERIAL
-Program Size: data=12.0 xdata=0 code=174
+Program Size: data=16.0 xdata=0 code=263
+creating hex file from "autosw"...
 "autosw" - 0 Error(s), 2 Warning(s).

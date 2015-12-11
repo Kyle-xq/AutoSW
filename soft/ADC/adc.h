@@ -9,4 +9,4 @@
 
 void Delay (u16 n);	
 void InitADC();
-//BYTE GetADCResult(BYTE ch);
+u16 GetADCResult(u8 ch);

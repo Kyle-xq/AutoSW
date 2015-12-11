@@ -21,25 +21,32 @@
 /*----------------------------
 读取ADC结果
 ----------------------------*/
-// BYTE GetADCResult(BYTE ch)
-// {
-    // ADC_CONTR = ADC_POWER | ADC_SPEEDLL | ch | ADC_START;
-    // _nop_();                        //等待4个NOP
-    // _nop_();
-    // _nop_();
-    // _nop_();
-    // while (!(ADC_CONTR & ADC_FLAG));//等待ADC转换完成
-    // ADC_CONTR &= ~ADC_FLAG;         //Close ADC
-
-    // return ADC_RES;                 //返回ADC结果
-// }
+u16 GetADCResult(u8 ch)
+{
+	u16 tmp =0;
+    ADC_CONTR = ADC_POWER | ADC_SPEEDLL | ch | ADC_START;
+    _nop_();                        //等待4个NOP
+    _nop_();
+    _nop_();
+    _nop_();
+	Delay(20); 
+    while (!(ADC_CONTR & ADC_FLAG));//等待ADC转换完成
+    ADC_CONTR &= ~ADC_FLAG;         //Close ADC
+	tmp = ADC_RES;
+	tmp = tmp + ADC_RESL;
+    return tmp;                 //返回ADC结果
+}
 
 /*----------------------------
 初始化ADC
 ----------------------------*/
 void InitADC()
 {
-    P1ASF = 0xff;                   //设置P1口为AD口
+	P1M1=0x0c;        //仅ADC2/P12和ADC3/P13高阻输入
+  P1M0=0x00;        //注意CCP1/P10和CCP0/P11不能为高阻输入
+  P1ASF=0x0c;        //ADC2及ADC3为A/D转换通道
+	
+	//CLK_DIV |=0x00 ;	//	ADC_RES[1:0], ADC_RESL[7:0]
     ADC_RES = 0;                    //清除结果寄存器
     ADC_CONTR = ADC_POWER | ADC_SPEEDLL;
     Delay(2);                       //ADC上电并延时
